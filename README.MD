@@ -31,37 +31,24 @@ The system architecture balances asynchronous blockchain mutations with performa
 
 ---
 
+markdown
 ## 2. System Architecture & Tech Stack
 
 The platform is designed around a headless architecture where the visual presentation layers are entirely insulated from underlying network updates.
 
+*   **Presentation Layer** (`StakingPanel.tsx`, `StakingStats.tsx`)
+    *   *Actions:* Triggers user staking, unstaking, and reward claims.
+    *   *Data Consumption:* Subscribes to memory-cached data trees for performance telemetry.
+*   **Asynchronous Hook Bridge** (`useStakingActions.ts`, `useStakingViews.ts`)
+    *   *Mutations:* Drives the step-by-step transaction pipelines and status machines.
+    *   *Queries:* Dispatches parallel multi-contract reads and syncs cache keys.
+*   **Data & Web3 Layer** (`@tanstack/react-query`, `Thirdweb SDK v4+`)
+    *   *State Orchestration:* Handles background query caching and post-transaction cache invalidation.
+    *   *Network Connection:* Interfaces with the blockchain using JSON-RPC provider utilities.
+*   **Infrastructure Layer** (`Polygon Blockchain Network`)
+    *   *Execution Environment:* Processes transactions and hosts the target staking smart contracts.
 
 
-┌────────────────────────────────────────────────────────┐
-│                   Presentation Layer                   │
-│         StakingPanel.tsx  │  StakingStats.tsx          │
-└───────────────────────────┬────────────────────────────┘
-(Triggers Actions) │  │ (Consumes Cached Data)
-▼  ▼
-┌────────────────────────────────────────────────────────┐
-│                Asynchronous Hook Bridge                │
-│     useStakingActions.ts  │  useStakingViews.ts        │
-└───────────────────────────┬────────────────────────────┘
-(Executes Mutations)│  │ (Orchestrates Queries)
-▼  ▼
-┌────────────────────────────────────────────────────────┐
-│                    Data & Web3 Layer                    │
-│   @tanstack/react-query   │   Thirdweb SDK (v4+)       │
-└───────────────────────────┬────────────────────────────┘
-│ (JSON-RPC Provider)
-▼
-Polygon Blockchain Network
-
-
-* **Frontend Environment:** React 18, TypeScript, and Tailwind CSS.
-* **Web3 Integration Layer:** **Thirdweb SDK (v4+)** for managed wallet connections (`useActiveAccount`), contract abstraction, and explicit block confirmations.
-* **Server-State Architecture:** **@tanstack/react-query** for memory caching, data invalidation paths, and transaction mutation tracking.
-* **Data Formatting:** **Ethers.js (v6)** utilities for cryptographic big-integer unit conversions.
 
 ---
 
