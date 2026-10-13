@@ -1,21 +1,4 @@
 
-# Web3 Staking Dashboard Architecture
-
-**Network Deployment:** Polygon (PoS) Mainnet  
-
----
-
-## 1. Executive Summary
-
-The Web3 Staking Dashboard is a performance-optimized decentralized application (dApp) designed to abstract the high-latency and multi-step complexities of smart contract interactions into a highly responsive, real-time user interface. 
-
-The system architecture balances asynchronous blockchain mutations with performant UI updates by separating concerns into four core modules. The implementation solves two persistent Web3 frontend challenges: **eliminating opaque transaction states** during multi-step contract execution, and **mitigating excessive RPC node overhead** through deterministic data caching and high-efficiency rendering.
-
----
-
-## 2. System Architecture & Tech Stack
-
-The platform is designed around a headless architecture where the visual presentation layers are entirely insulated from underlying network updates.
 
 # Web3 Staking Dashboard Architecture
 
@@ -31,7 +14,7 @@ The system architecture balances asynchronous blockchain mutations with performa
 
 ---
 
-markdown
+
 ## 2. System Architecture & Tech Stack
 
 The platform is designed around a headless architecture where the visual presentation layers are entirely insulated from underlying network updates.
