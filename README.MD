@@ -1,5 +1,4 @@
-Here is the final technical report formatted as a clean, ready-to-paste README.md file:
-markdown
+
 # Web3 Staking Dashboard Architecture
 
 **Network Deployment:** Polygon (PoS) Mainnet  
@@ -18,7 +17,26 @@ The system architecture balances asynchronous blockchain mutations with performa
 
 The platform is designed around a headless architecture where the visual presentation layers are entirely insulated from underlying network updates.
 
-Use code with caution.
+# Web3 Staking Dashboard Architecture
+
+**Network Deployment:** Polygon (PoS) Mainnet  
+
+---
+
+## 1. Executive Summary
+
+The Web3 Staking Dashboard is a performance-optimized decentralized application (dApp) designed to abstract the high-latency and multi-step complexities of smart contract interactions into a highly responsive, real-time user interface. 
+
+The system architecture balances asynchronous blockchain mutations with performant UI updates by separating concerns into four core modules. The implementation solves two persistent Web3 frontend challenges: **eliminating opaque transaction states** during multi-step contract execution, and **mitigating excessive RPC node overhead** through deterministic data caching and high-efficiency rendering.
+
+---
+
+## 2. System Architecture & Tech Stack
+
+The platform is designed around a headless architecture where the visual presentation layers are entirely insulated from underlying network updates.
+
+
+
 ┌────────────────────────────────────────────────────────┐
 │                   Presentation Layer                   │
 │         StakingPanel.tsx  │  StakingStats.tsx          │
@@ -38,6 +56,7 @@ Use code with caution.
 │ (JSON-RPC Provider)
 ▼
 Polygon Blockchain Network
+
 
 * **Frontend Environment:** React 18, TypeScript, and Tailwind CSS.
 * **Web3 Integration Layer:** **Thirdweb SDK (v4+)** for managed wallet connections (`useActiveAccount`), contract abstraction, and explicit block confirmations.
@@ -81,4 +100,4 @@ This pure structural component organizes data streams into a readable metrics da
 
 * **Advanced Clean Architecture:** Code separation is strictly maintained. The codebase splits asynchronous Web3 read models (`useStakingViews`), mutations (`useStakingActions`), user forms (`StakingPanel`), and presentation metrics (`StakingStats`) into highly modular, reusable engineering units.
 * **Granular Blockchain Telemetry:** Replaces generic loading screens with descriptive transaction updates that walk users through approval, execution, and confirmation phases.
-* **Strict Runtime Type Safety:** Extensively relies on rigid TypeScript typings to prevent runtime bugs. This enforces correct formatting across both contract ABI interfaces and local application UI configurations
+* **Strict Runtime Type Safety:** Extensively relies on rigid TypeScript typings to prevent runtime bugs. This enforces correct formatting across both contract ABI interfaces and local application UI configurations'
